@@ -1,3 +1,37 @@
 page-home {
+  font-family: 'Raleway-Light', sans-serif;
+  .date {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+  }
+  .dayOfWeek {
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    top: 15px;
+  }
+  .mmddyy {
+    font-size: 16px;
+    position: relative;
+    top: 30px;
+  }
+  .newBtn {
+    position: relative;
+    top: 10px;
+    left: 35px;
+  }
+  .taskCounter {
+    font-size: 16px;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+  }
+  .pastDue {
+    color: red;
+  }
+
+  .taskLabel{
+      font-weight: bold;
+  }
+
 
 }

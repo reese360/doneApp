@@ -1,14 +1,60 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div class="date">
+    <div class="dayOfWeek">Wednesday&nbsp;</div>
+    <div class="mmddyy">05.02.2018</div>
+    <div class="newBtn">
+      <img src="/assets/imgs/plus.svg" height="60">
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <div class="taskCounter">
+        <strong>3</strong>&nbsp;Tasks To Do &nbsp;
+        <div class="pastDue">
+          &#123;<strong>1</strong>&nbsp;Task Past Due&#125;</div>
+      </div>
+    </ion-row>
+    <ion-row>
+      &nbsp;
+    </ion-row>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-row>
+          <ion-col col-2>
+            <div class="dueDate">
+              05.01
+            </div>
+          </ion-col>
+          <ion-col col-9>
+            <div class="taskLabel">
+              Design GUI
+            </div>
+          </ion-col>
+          <ion-col>
+            <img src="assets/imgs/box.svg" height="16">
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+          <ion-row>
+            <ion-col col-2>
+              <div class="dueDate">
+                05.01
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div class="taskLabel">
+                Plan project framework
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src="assets/imgs/check.svg" height="30">
+            </ion-col>
+          </ion-row>
+        </ion-item>
+    </ion-list>
+  </ion-grid>
 </ion-content>
