@@ -2,7 +2,7 @@
   "tasks": "2",
   "pastDueTasks": "1,",
   "data": [{
-      "sortNum": "0501",
+      "sortNum": "501",
       "dueDate": "05.01",
       "taskLabel": "Design GUI",
       "complete": false,
@@ -10,13 +10,12 @@
       "notes": "finish layout design"
     },
     {
-      "sortNum": "0504",
+      "sortNum": "504",
       "dueDate": "05.04",
       "taskLabel": "Conference Call",
       "complete": false,
       "complete_url": "/assests/imgs/box.svg",
       "notes": null
-
     }
   ]
 }

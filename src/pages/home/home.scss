@@ -34,24 +34,18 @@ page-home {
     float: left;
     width: auto;
   }
-  .pastDue {
-    float: left;
-    color: red;
-  }
   .taskCounterContainer:after {
     content: "";
     display: table;
     clear: both;
   }
-  .taskItem {
-    color: rgb(182, 182, 182);
-    text-decoration: line-through;
-  }
   .itemListContainer {
-    padding-top: 20px;
+    // padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 20px;
+    // padding-bottom: 10px;
+    font-size: 18px;
+    height:20px;
   }
   .itemListContainer:after {
     content: "";
@@ -63,12 +57,22 @@ page-home {
     float: left;
   }
   .taskLabel {
-    font-weight: bold;
+    // font-weight: bold;
     width: auto;
     float: left;
   }
   .checkBox {
     float: right;
-    height:25px;
+    height: 20px;
+  }
+  .completed {
+    color: #b6b6b6;
+    text-decoration: line-through;
+  }
+  .notCompleted {
+    color: black;
+  }
+  .pastDue {
+    color: red;
   }
 }

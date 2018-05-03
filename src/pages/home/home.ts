@@ -6,6 +6,25 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  // test data json 
+  data = [
+    {"sortNum": "501",
+    "dueDate": "05.01",
+    "taskLabel": "Design GUI",
+    "complete": false,
+    "complete_url": "/assets/imgs/box.svg",
+    "notes": "finish layout design"
+    },
+    {
+      "sortNum": "504",
+      "dueDate": "05.04",
+      "taskLabel": "Conference Call",
+      "complete": false,
+      "complete_url": "/assets/imgs/box.svg",
+      "notes": null
+    }
+  ]
+
   day_name:string; //name of current day of week
   day_date:string; //MM.DD.YYYY
 
@@ -17,7 +36,7 @@ export class HomePage {
   // array to assign day name
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
-  gray = 'color: #b6b6b6';
+  completed = true;
 
   constructor(public navCtrl: NavController) {
     let currentDate = new Date();
@@ -30,7 +49,7 @@ export class HomePage {
     this.day_date = month+'.'+day+'.'+year;
 
     // assigning temp values
-    this.numTasks = 3;
+    this.numTasks = 2;
     this.numTasksPD = "{1 Task Past Due}";
   }
 
@@ -38,15 +57,20 @@ export class HomePage {
     console.log("clicked");
   }
 
-  CheckBox(){
-    if(this.cb.includes("box"))
-      this.cb="assets/imgs/check.svg";
-    else
-      this.cb="assets/imgs/box.svg";
+  // mark task as complete
+  CheckBox(index){
+    if(this.data[index].complete_url.includes("box")){
+      this.data[index].complete_url = "assets/imgs/check.svg";
+      // mark task as complete
+    }else{
+      this.data[index].complete_url = "assets/imgs/box.svg";
+      // mark task as incomplete
+    }
   }
 
   AddZeroFormat(num){
     return (num < 10 ? '0'+num.toString() : num.toString());
   }
+
 
 }
