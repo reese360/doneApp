@@ -2,59 +2,39 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="date">
-    <div class="dayOfWeek">Wednesday&nbsp;</div>
-    <div class="mmddyy">05.02.2018</div>
+  <div class="dateContainer">
+    <div class="dayOfWeek">{{ day_name }}&nbsp;</div>
+    <div class="mmddyy">{{ day_date }}</div>
     <div class="newBtn">
-      <img src="/assets/imgs/plus.svg" height="60">
+      <!-- <img src="/assets/imgs/plus.svg"> -->
+      <img src="/assets/imgs/plus.svg" style="width : 100% ; height : 100%" (click)="AddTask()">
     </div>
   </div>
-  <ion-grid>
-    <ion-row>
-      <div class="taskCounter">
-        <strong>3</strong>&nbsp;Tasks To Do &nbsp;
-        <div class="pastDue">
-          &#123;<strong>1</strong>&nbsp;Task Past Due&#125;</div>
+  <div class="taskCounterContainer">
+    <div class="taskCounter">
+      <strong>{{ numTasks }}</strong> Taks To Do&nbsp;</div>
+    <div class="pastDue">
+      <strong>{{ numTasksPD }} </strong>
+    </div>
+  </div>
+  <div class="itemListContainer">
+    <div style="color:red">
+      <div class="dueDate">05.01</div>
+      <div class="taskLabel">Design GUI</div>
+      <div class="checkBox">
+        <!-- <img src="assets/imgs/box.svg" style="width : 100% ; height : 100%" (click)="AddTask()"> -->
+        <ion-img class="map" [src]="cb" (click)="CheckBox()" style="background: white;"></ion-img>
       </div>
-    </ion-row>
-    <ion-row>
-      &nbsp;
-    </ion-row>
-    <ion-list no-lines>
-      <ion-item>
-        <ion-row>
-          <ion-col col-2>
-            <div class="dueDate">
-              05.01
-            </div>
-          </ion-col>
-          <ion-col col-9>
-            <div class="taskLabel">
-              Design GUI
-            </div>
-          </ion-col>
-          <ion-col>
-            <img src="assets/imgs/box.svg" height="16">
-          </ion-col>
-        </ion-row>
-      </ion-item>
-      <ion-item>
-          <ion-row>
-            <ion-col col-2>
-              <div class="dueDate">
-                05.01
-              </div>
-            </ion-col>
-            <ion-col col-9>
-              <div class="taskLabel">
-                Plan project framework
-              </div>
-            </ion-col>
-            <ion-col>
-              <img src="assets/imgs/check.svg" height="30">
-            </ion-col>
-          </ion-row>
-        </ion-item>
-    </ion-list>
-  </ion-grid>
+    </div>
+  </div>
+  <div class="itemListContainer">
+    <div style="color:black">
+      <div class="dueDate">05.04</div>
+      <div class="taskLabel">Conference Call</div>
+      <div class="checkBox">
+        <!-- <img src="assets/imgs/box.svg" style="width : 100% ; height : 100%" (click)="AddTask()"> -->
+        <ion-img class="map" [src]="cb" (click)="CheckBox()" style="background: white;"></ion-img>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -1,37 +1,74 @@
 page-home {
   font-family: 'Raleway-Light', sans-serif;
-  .date {
-    display: -webkit-flex;
-    -webkit-flex-direction: row;
+  .dateContainer {
+    // position: relative;
+    top: 10px;
+  }
+  .dateContainer:after {
+    content: "";
+    display: table;
+    clear: both;
   }
   .dayOfWeek {
-    font-size: 30px;
+    font-size: 36px;
     font-weight: bold;
-    position: relative;
-    top: 15px;
+    position: relative; // top: 15px;
+    float: left;
+    width: fit-content;
   }
   .mmddyy {
     font-size: 16px;
     position: relative;
-    top: 30px;
+    top: 18px;
+    float: left;
+    width: auto;
   }
   .newBtn {
-    position: relative;
-    top: 10px;
-    left: 35px;
+    float: right;
+    width: 15%;
+  }
+  .taskCounterContainer {
+    font-size: 18px;
   }
   .taskCounter {
-    font-size: 16px;
-    display: -webkit-flex;
-    -webkit-flex-direction: row;
+    float: left;
+    width: auto;
   }
   .pastDue {
+    float: left;
     color: red;
   }
-
-  .taskLabel{
-      font-weight: bold;
+  .taskCounterContainer:after {
+    content: "";
+    display: table;
+    clear: both;
   }
-
-
+  .taskItem {
+    color: rgb(182, 182, 182);
+    text-decoration: line-through;
+  }
+  .itemListContainer {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+  }
+  .itemListContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .dueDate {
+    width: 20%;
+    float: left;
+  }
+  .taskLabel {
+    font-weight: bold;
+    width: auto;
+    float: left;
+  }
+  .checkBox {
+    float: right;
+    height:25px;
+  }
 }
