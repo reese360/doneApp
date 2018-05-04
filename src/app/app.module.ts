@@ -7,8 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+// import { InfoPage } from '../pages/info/info';
 
 import { NativeAudio } from '@ionic-native/native-audio';
+import { Vibration } from '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
     StatusBar,
     SplashScreen,
     NativeAudio,
+    Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

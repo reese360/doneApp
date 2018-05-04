@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController,AlertController, ModalController } from 'ionic-angular';
+import { Vibration } from '@ionic-native/vibration';
 
 @Component({
   selector: 'page-home',
@@ -47,7 +47,7 @@ export class HomePage {
   // array to assign day name
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
-  constructor(public navCtrl: NavController) {
+  constructor(private vibration: Vibration, public navCtrl: NavController, private modal: ModalController, private alertCtrl: AlertController) {
     // this.nativeAudio.preloadSimple('click', 'assets/sound/click.mp3');
     this.click = new Audio('assets/sound/click.mp3');
 
@@ -75,6 +75,7 @@ export class HomePage {
   // mark task as complete
   CheckBox(index){
     this.click.play(); // play click on press
+    this.vibration.vibrate(1000);
     if(this.data[index].complete_url.includes("box")){
       this.data[index].complete_url = "assets/imgs/check.svg";
       this.data[index].complete = true;
@@ -108,6 +109,9 @@ export class HomePage {
 
   InfoClick(){
     console.log("info clicked");
+    const infoModal = this.modal.create('InfoPage');
+    infoModal.present();
+    
   }
 
 }
