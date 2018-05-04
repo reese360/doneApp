@@ -49,7 +49,7 @@ export class HomePage {
 
   constructor(private vibration: Vibration, public navCtrl: NavController, private modal: ModalController, private alertCtrl: AlertController) {
     // this.nativeAudio.preloadSimple('click', 'assets/sound/click.mp3');
-    this.click = new Audio('assets/sound/click.mp3');
+    // this.click = new Audio('assets/sound/click.mp3');
 
     let currentDate = new Date();
     currentDate.setDate(currentDate.getDate());
@@ -60,7 +60,7 @@ export class HomePage {
     let year = (currentDate.getFullYear()).toString();
     this.day_date = month+'.'+day+'.'+year;
 
-    this.day_sortNum = 503;
+    this.day_sortNum = (currentDate.getMonth() + 1) * 100 + (currentDate.getDate()); // used to sort by date
     this.updateTaskCounter();
 
     // assigning temp values
@@ -70,12 +70,13 @@ export class HomePage {
 
   AddTask(){
     console.log("add task clicked");
+    this.vibration.vibrate(500); // vibrate on press
   }
 
   // mark task as complete
   CheckBox(index){
-    this.click.play(); // play click on press
-    this.vibration.vibrate(1000);
+    // this.click.play(); // play click on press
+    this.vibration.vibrate(500); // vibrate on press
     if(this.data[index].complete_url.includes("box")){
       this.data[index].complete_url = "assets/imgs/check.svg";
       this.data[index].complete = true;

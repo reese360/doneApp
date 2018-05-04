@@ -21,7 +21,6 @@
   <ion-list>
     <ion-item no-lines *ngFor="let d of data; let i=index">
       <div class="itemListContainer">
-        <!-- <div class="notCompleted"> -->
         <div [ngClass]="(data[i].complete)?'completed':'notCompleted'">
           <div class="dueDate">{{ data[i].dueDate }}</div>
           <div class="taskLabel">{{ data[i].taskLabel }}</div>
