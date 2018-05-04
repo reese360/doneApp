@@ -62,12 +62,14 @@ page-home {
   }
   .completed {
     color: #b6b6b6;
-    text-decoration: line-through;
   }
   .notCompleted {
     color: black;
   }
-  .pastDue {
+  .notCompletedPD{
+    color: red;
+  }
+  .pastDueTaskCounter {
     color: red;
     animation-name: fadeIn;
     animation-duration: 2s;
@@ -83,7 +85,7 @@ page-home {
   .item {
     min-height: 50px;
   }
-  .info {
+  .infoBtn {
     left: 5px;
     bottom: 5px;
     position: absolute;
