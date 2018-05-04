@@ -79,11 +79,6 @@ export class HomePage {
     this.SortData();
   }
 
-  AddTask(){
-    console.log("add task clicked");
-    this.vibration.vibrate(500); // vibrate on press
-  }
-
   // mark task as complete
   CheckBox(index){
     // this.click.play(); // play click on press
@@ -98,7 +93,7 @@ export class HomePage {
       // this.data_num += 1;//
     }
     this.updateTaskCounter();
-    this.SortData();
+    this.SortData(); // <-- remove this after local file storage is implemented
   }
 
   AddZeroFormat(num){
@@ -125,8 +120,12 @@ export class HomePage {
   InfoClick(){
     console.log("info clicked");
     const infoModal = this.modal.create('InfoPage');
-    infoModal.present();
-    
+    infoModal.present(); 
+  }
+
+  AddTask(){
+    console.log("add task clicked");
+    this.vibration.vibrate(500); // vibrate on press
   }
 
 
