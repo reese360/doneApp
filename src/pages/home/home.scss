@@ -40,12 +40,8 @@ page-home {
     clear: both;
   }
   .itemListContainer {
-    // padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    // padding-bottom: 10px;
     font-size: 18px;
-    height:20px;
+    height:8px;
   }
   .itemListContainer:after {
     content: "";
@@ -74,5 +70,8 @@ page-home {
   }
   .pastDue {
     color: red;
+  }
+  .item {
+    min-height: 50px;
   }
 }

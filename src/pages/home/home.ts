@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { CommonModule } from "@angular/common";
+import { NativeAudio } from '@ionic-native/native-audio';
+
 
 @Component({
   selector: 'page-home',
@@ -19,8 +22,8 @@ export class HomePage {
       "sortNum": "504",
       "dueDate": "05.04",
       "taskLabel": "Conference Call",
-      "complete": false,
-      "complete_url": "/assets/imgs/box.svg",
+      "complete": true,
+      "complete_url": "/assets/imgs/check.svg",
       "notes": null
     }
   ]
@@ -31,14 +34,17 @@ export class HomePage {
   numTasks:number; // count of open tasks
   numTasksPD:string; // string count of past due open tasks (wont appear if not set)
 
-  cb:string="assets/imgs/box.svg";
+  click:any;
 
   // array to assign day name
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
   completed = true;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private nativeAudio: NativeAudio) {
+    // this.nativeAudio.preloadSimple('click', 'assets/sound/click.mp3');
+    this.click = new Audio('assets/sound/click.mp3');
+
     let currentDate = new Date();
     currentDate.setDate(currentDate.getDate());
     this.day_name = this.weekdays[currentDate.getDay()];
@@ -59,11 +65,15 @@ export class HomePage {
 
   // mark task as complete
   CheckBox(index){
+    // this.nativeAudio.play('click', () => console.log('click'));
+    this.click.play();
     if(this.data[index].complete_url.includes("box")){
       this.data[index].complete_url = "assets/imgs/check.svg";
+      this.data[index].complete = true;
       // mark task as complete
     }else{
       this.data[index].complete_url = "assets/imgs/box.svg";
+      this.data[index].complete = false;
       // mark task as incomplete
     }
   }
@@ -72,5 +82,9 @@ export class HomePage {
     return (num < 10 ? '0'+num.toString() : num.toString());
   }
 
+  ChooseClass(){
+    console.log('here');
+    return "completed"
+  }
 
 }

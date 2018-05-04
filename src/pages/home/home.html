@@ -1,7 +1,7 @@
 <ion-header>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="data">
   <div class="dateContainer">
     <div class="dayOfWeek">{{ day_name }}&nbsp;</div>
     <div class="mmddyy">{{ day_date }}</div>
@@ -18,16 +18,18 @@
     </div>
   </div>
   <div style="height:20px"></div>
-  <ion-item no-lines *ngFor="let d of data; let i=index">
-    <div class="itemListContainer">
-      <div class="notCompleted">
-        <div class="dueDate">{{ data[i].dueDate }}</div>
-        <div class="taskLabel">{{ data[i].taskLabel }}</div>
-        <div class="checkBox">
-          <img src="{{ data[i].complete_url }}" style="width : 100% ; height : 100%" (click)="CheckBox(i)">
+  <ion-list>
+    <ion-item no-lines *ngFor="let d of data; let i=index">
+      <div class="itemListContainer">
+        <!-- <div class="notCompleted"> -->
+        <div [ngClass]="(data[i].complete)?'completed':'notCompleted'">
+          <div class="dueDate">{{ data[i].dueDate }}</div>
+          <div class="taskLabel">{{ data[i].taskLabel }}</div>
+          <div class="checkBox">
+            <img src="{{ data[i].complete_url }}" style="width : 100% ; height : 100%" (click)="CheckBox(i)">
+          </div>
         </div>
       </div>
-    </div>
-  </ion-item>
-
+    </ion-item>
+  </ion-list>
 </ion-content>
