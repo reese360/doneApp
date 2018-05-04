@@ -40,8 +40,7 @@ page-home {
     clear: both;
   }
   .itemListContainer {
-    font-size: 18px;
-    height: 8px;
+    font-size: 16px;
   }
   .itemListContainer:after {
     content: "";
@@ -70,6 +69,16 @@ page-home {
   }
   .pastDue {
     color: red;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   .item {
     min-height: 50px;
