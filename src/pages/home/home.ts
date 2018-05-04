@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CommonModule } from "@angular/common";
-import { NativeAudio } from '@ionic-native/native-audio';
 
 
 @Component({
@@ -49,7 +47,7 @@ export class HomePage {
   // array to assign day name
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
-  constructor(public navCtrl: NavController, private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController) {
     // this.nativeAudio.preloadSimple('click', 'assets/sound/click.mp3');
     this.click = new Audio('assets/sound/click.mp3');
 
@@ -71,7 +69,7 @@ export class HomePage {
   }
 
   AddTask(){
-    console.log("clicked");
+    console.log("add task clicked");
   }
 
   // mark task as complete
@@ -101,11 +99,15 @@ export class HomePage {
         this.data_num += 1;
       if(this.data[i].sortNum < this.day_sortNum && !this.data[i].complete)
       this.data_pastDueTasks += 1;
-      if (this.data_pastDueTasks > 0)
+    }
+    if (this.data_pastDueTasks > 0)
         this.numTasksPD = '{'+this.data_pastDueTasks.toString() +' Task Past Due}';
       else
         this.numTasksPD = null;
-    }
+  }
+
+  InfoClick(){
+    console.log("info clicked");
   }
 
 }
