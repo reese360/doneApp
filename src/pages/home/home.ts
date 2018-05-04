@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -10,41 +11,41 @@ export class HomePage {
   // test data json 
   data_num:number;
   data_pastDueTasks:number;
-  data = [
-    {"sortNum": 506,
-    "dueDate": "05.06",
-    "taskLabel": "Interview Applicant - Reese",
-    "complete": false,
-    "pastDue": false,
-    "complete_url": "/assets/imgs/box.svg",
-    "notes": null
-    },
-    {"sortNum": 501,
-    "dueDate": "05.01",
-    "taskLabel": "Design GUI",
-    "complete": false,
-    "pastDue": true,
-    "complete_url": "/assets/imgs/box.svg",
-    "notes": "finish layout design"
-    },
-    {"sortNum": 502,
-    "dueDate": "05.02",
-    "taskLabel": "Work on Task mgmt",
-    "complete": false,
-    "pastDue": true,
-    "complete_url": "/assets/imgs/box.svg",
-    "notes": null
-    },
-    {
-      "sortNum": 504,
-      "dueDate": "05.04",
-      "taskLabel": "Conference Call",
-      "complete": true,
-      "pastDue": false,
-      "complete_url": "/assets/imgs/check.svg",
-      "notes": null
-    }
-  ]
+  data = [];
+  //   {"sortNum": 506,
+  //   "dueDate": "05.06",
+  //   "taskLabel": "Interview Applicant - Reese",
+  //   "complete": false,
+  //   "pastDue": false,
+  //   "complete_url": "/assets/imgs/box.svg",
+  //   "notes": null
+  //   },
+  //   {"sortNum": 501,
+  //   "dueDate": "05.01",
+  //   "taskLabel": "Design GUI",
+  //   "complete": false,
+  //   "pastDue": true,
+  //   "complete_url": "/assets/imgs/box.svg",
+  //   "notes": "finish layout design"
+  //   },
+  //   {"sortNum": 502,
+  //   "dueDate": "05.02",
+  //   "taskLabel": "Work on Task mgmt",
+  //   "complete": false,
+  //   "pastDue": true,
+  //   "complete_url": "/assets/imgs/box.svg",
+  //   "notes": null
+  //   },
+  //   {
+  //     "sortNum": 504,
+  //     "dueDate": "05.04",
+  //     "taskLabel": "Conference Call",
+  //     "complete": true,
+  //     "pastDue": false,
+  //     "complete_url": "/assets/imgs/check.svg",
+  //     "notes": null
+  //   }
+  // ]
 
   day_name:string; //name of current day of week
   day_date:string; //MM.DD.YYYY
@@ -58,9 +59,16 @@ export class HomePage {
   // array to assign day name
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
 
-  constructor(private vibration: Vibration, public navCtrl: NavController, private modal: ModalController) {
-    // this.nativeAudio.preloadSimple('click', 'assets/sound/click.mp3');
+  constructor(private vibration: Vibration, public navCtrl: NavController, private modal: ModalController, private storage: Storage) {
     // this.click = new Audio('assets/sound/click.mp3');
+
+    this.storage.get('data').then((val) => {
+      if(val != null){
+        let myData = JSON.parse(val);
+        this.data_num = myData.numtasks;
+        this.data = myData.data;
+      }
+    })
 
     let currentDate = new Date();
     currentDate.setDate(currentDate.getDate());
@@ -76,14 +84,24 @@ export class HomePage {
 
     // assigning temp values
     this.numTasks = 2;
-    this.SortData();
+    // this.SortData();
+  }
+
+  ionViewWillEnter(){
+    // let myData = {
+    //   numtasks: this.data.length,
+    //   data: this.data
+    // }
+
+    // this.storage.set('data',JSON.stringify(myData));
+    // console.log("data should be stored...");
   }
 
   // mark task as complete
   CheckBox(index){
     // this.click.play(); // play click on press
-    this.vibration.vibrate(500); // vibrate on press
     if(this.data[index].complete_url.includes("box")){
+      this.vibration.vibrate(500); // vibrate on press
       this.data[index].complete_url = "assets/imgs/check.svg";
       this.data[index].complete = true;
       // this.data_num -= 1;
@@ -94,6 +112,7 @@ export class HomePage {
     }
     this.updateTaskCounter();
     this.SortData(); // <-- remove this after local file storage is implemented
+    this.saveData();
   }
 
   AddZeroFormat(num){
@@ -158,6 +177,15 @@ export class HomePage {
       }
     }
     return data;
+  }
+
+  saveData(){
+    let myData = {
+     numtasks: this.data.length,
+     data: this.data
+    }
+
+    this.storage.set('data',JSON.stringify(myData));
   }
 
 }
