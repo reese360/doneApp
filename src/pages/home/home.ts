@@ -12,40 +12,41 @@ export class HomePage {
   data_num:number;
   data_pastDueTasks:number;
   data = [];
-  //   {"sortNum": 506,
-  //   "dueDate": "05.06",
-  //   "taskLabel": "Interview Applicant - Reese",
-  //   "complete": false,
-  //   "pastDue": false,
-  //   "complete_url": "/assets/imgs/box.svg",
-  //   "notes": null
-  //   },
-  //   {"sortNum": 501,
-  //   "dueDate": "05.01",
-  //   "taskLabel": "Design GUI",
-  //   "complete": false,
-  //   "pastDue": true,
-  //   "complete_url": "/assets/imgs/box.svg",
-  //   "notes": "finish layout design"
-  //   },
-  //   {"sortNum": 502,
-  //   "dueDate": "05.02",
-  //   "taskLabel": "Work on Task mgmt",
-  //   "complete": false,
-  //   "pastDue": true,
-  //   "complete_url": "/assets/imgs/box.svg",
-  //   "notes": null
-  //   },
-  //   {
-  //     "sortNum": 504,
-  //     "dueDate": "05.04",
-  //     "taskLabel": "Conference Call",
-  //     "complete": true,
-  //     "pastDue": false,
-  //     "complete_url": "/assets/imgs/check.svg",
-  //     "notes": null
-  //   }
-  // ]
+  defaultData = [
+    {"sortNum": 506,
+    "dueDate": "05.06",
+    "taskLabel": "Interview Applicant - Reese",
+    "complete": false,
+    "pastDue": false,
+    "complete_url": "/assets/imgs/box.svg",
+    "notes": null
+    },
+    {"sortNum": 501,
+    "dueDate": "05.01",
+    "taskLabel": "Design GUI",
+    "complete": false,
+    "pastDue": true,
+    "complete_url": "/assets/imgs/box.svg",
+    "notes": "finish layout design"
+    },
+    {"sortNum": 502,
+    "dueDate": "05.02",
+    "taskLabel": "Work on Task mgmt",
+    "complete": false,
+    "pastDue": true,
+    "complete_url": "/assets/imgs/box.svg",
+    "notes": null
+    },
+    {
+      "sortNum": 504,
+      "dueDate": "05.04",
+      "taskLabel": "Conference Call",
+      "complete": true,
+      "pastDue": false,
+      "complete_url": "/assets/imgs/check.svg",
+      "notes": null
+    }
+  ]
 
   day_name:string; //name of current day of week
   day_date:string; //MM.DD.YYYY
@@ -67,6 +68,10 @@ export class HomePage {
         let myData = JSON.parse(val);
         this.data_num = myData.numtasks;
         this.data = myData.data;
+      }
+      else{
+        this.data_num = 1;
+        this.data = this.defaultData;
       }
     })
 
@@ -145,6 +150,8 @@ export class HomePage {
   AddTask(){
     console.log("add task clicked");
     this.vibration.vibrate(500); // vibrate on press
+    const addModal = this.modal.create('AddPage');
+    addModal.present();
   }
 
 
@@ -186,6 +193,7 @@ export class HomePage {
     }
 
     this.storage.set('data',JSON.stringify(myData));
+    console.log(this.data);
   }
 
 }

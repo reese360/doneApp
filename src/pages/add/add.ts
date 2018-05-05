@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the AddPage page.
@@ -15,11 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private view: ViewController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddPage');
+  goBack(){
+    this.view.dismiss();
   }
 
 }
