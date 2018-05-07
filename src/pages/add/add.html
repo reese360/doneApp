@@ -14,16 +14,14 @@
         <ion-list>
           <form (ngSubmit)="saveForm()">
             <ion-item>
-              <ion-label>
-                City
-              </ion-label>
-              <ion-input [(ngModel)]="city" name="city" type="text"></ion-input>
+              <ion-input #focusInput [(ngModel)]="label" name="label" type="text" placeholder="Task Name"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>
-                State
-              </ion-label>
-              <ion-input [(ngModel)]="state" name="state" type="text"></ion-input>
+              <ion-input [(ngModel)]="dDate" name="dDate" type="text" placeholder="Due Date"></ion-input>
+              <ion-input [(ngModel)]="dTime" name="dTime" type="text" placeholder="Due Time"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-textarea [(ngModel)]="notes" name="notes" placeholder="Notes"></ion-textarea>
             </ion-item>
             <div style="margin-top: 10px;">
               <div style="float:right;padding: 10px;">
@@ -35,12 +33,11 @@
               <div style="float:right;padding: 10px;">
                 <img src="assets/imgs/alarm.svg" height="36px">
               </div>
-              <div style="float:right;padding:10px; margin-top:10px; height:36px; width:36px;background-color: rgb(67, 67, 255)"></div>
-              <div style="float:right;padding:10px; margin-top:10px; height:36px; width:36px;background-color: rgb(110, 226, 110)"></div>
-              <div style="float:right;padding:10px; margin-top:10px; height:36px; width:36px;background-color: rgb(255, 187, 61)"></div>
-              <div style="float:right;padding:10px; margin-top:10px; height:36px; width:36px;background-color: black"></div>
+              <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: rgb(67, 67, 255)"></div>
+              <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: rgb(110, 226, 110)"></div>
+              <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: rgb(255, 187, 61)"></div>
+              <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: black"></div>
             </div>
-
           </form>
         </ion-list>
       </ion-col>

@@ -1,12 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
 
-/**
- * Generated class for the AddPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,9 +9,19 @@ import { IonicPage, NavParams, ViewController } from 'ionic-angular';
   templateUrl: 'add.html',
 })
 export class AddPage {
+  @ViewChild('focusInput') myInput ;
 
-  constructor(private view: ViewController, public navParams: NavParams) {
+  constructor(private view: ViewController, public navParams: NavParams, private keyboard: Keyboard) {
   }
+
+  ionViewLoaded() {
+
+    setTimeout(() => {
+      this.keyboard.show() // for android
+      this.myInput.setFocus();
+    },150); //a least 150ms.
+
+ }
 
   goBack(){
     this.view.dismiss();
