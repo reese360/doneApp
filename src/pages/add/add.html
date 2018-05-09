@@ -12,35 +12,33 @@
     <ion-row>
       <ion-col width-100>
         <ion-list>
-          <form (ngSubmit)="saveForm()">
+          <form>
             <ion-item>
               <ion-label>Task Name</ion-label>
-              <ion-input #focusInput [(ngModel)]="label" name="label" type="text"></ion-input>
+              <ion-input [(ngModel)]="taskName" name="taskName" type="text"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Due Date</ion-label>
-              <ion-datetime displayFormat="MM.DD.YYYY" pickerFormat="MM DD YYYY" min="2018-01-01" max="2020-12-31" [(ngModel)]="todayDate"
-                name="dDate"></ion-datetime>
+              <ion-datetime displayFormat="DDDD MM.DD.YYYY" pickerFormat="MM DD YYYY" min="2018-01-01" max="2028-12-31" [(ngModel)]="todayDate"
+                name="dueDate"></ion-datetime>
             </ion-item>
+              <!-- <ion-item>
+                <ion-label> Due Time</ion-label>
+                <ion-datetime displayFormat="@ hh:mm A" name="dueTime" [(ngModel)]="todayTime"></ion-datetime>
+              </ion-item> -->
             <ion-item>
-              <ion-label>
-                Due Time
-              </ion-label>
-              <ion-datetime displayFormat="hh:mm A" name="time" [(ngModel)]="todayTime"></ion-datetime>
-            </ion-item>
-            <ion-item>
-              <ion-textarea [(ngModel)]="notes" name="notes" placeholder="Notes"></ion-textarea>
+              <ion-textarea [(ngModel)]="notes" name="taskNotes" placeholder="// Notes"></ion-textarea>
             </ion-item>
             <div style="margin-top: 10px;">
               <div style="float:right;padding: 10px;">
-                <img src="assets/imgs/save.svg" height="36px">
+                <img src="assets/imgs/save.svg" height="36px" (click)="saveTask()">
               </div>
               <div style="float:right;padding: 10px;">
-                <img src="assets/imgs/delete.svg" height="36px">
+                <img src="assets/imgs/delete.svg" height="36px" (click)="goBack()">
               </div>
-              <div style="float:right;padding: 10px;">
+              <!-- <div style="float:right;padding: 10px;">
                 <img src="assets/imgs/alarm.svg" height="36px">
-              </div>
+              </div> -->
               <!-- <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: rgb(67, 67, 255)"></div>
               <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: rgb(110, 226, 110)"></div>
               <div style="float:left;padding:10px; margin-top:10px; height:34px; width:36px;background-color: rgb(255, 187, 61)"></div>

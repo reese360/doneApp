@@ -2,6 +2,15 @@ page-add {
     textarea{
         height:120px;	
     }
+    
+    input { 
+        text-align: right; 
+    }
+
+    .label{
+        font-size: 10px;
+        font-weight: bold;
+    }
 
     .picker-columns,
     .picker-toolbar,
@@ -31,5 +40,7 @@ page-add {
      color: #fff;
      font-family: Montserrat-Regular;
    }
+
+
 
 }

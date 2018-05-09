@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, Modal } from 'ionic-angular';
 import { Vibration } from '@ionic-native/vibration';
 import { Storage } from '@ionic/storage';
 
@@ -150,8 +150,11 @@ export class HomePage {
   AddTask(){
     console.log("add task clicked");
     this.vibration.vibrate(500); // vibrate on press
-    const addModal = this.modal.create('AddPage');
+    const addModal: Modal = this.modal.create('AddPage');
     addModal.present();
+    addModal.onDidDismiss((newTask) => {
+      console.log(newTask);
+    })
   }
 
 
